@@ -1,0 +1,21 @@
+body {
+	background: none;
+	color: #000;
+	font-size: 11px;
+	padding: 0;
+}
+
+#logo, #site_content {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#logo img {
+	width: 5cm;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}

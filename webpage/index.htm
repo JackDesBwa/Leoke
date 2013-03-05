@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr" dir="ltr">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>L&eacute;ok&eacute;</title>
+		<link rel="stylesheet" type="text/css" href="grid.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	</head>
+	<body>
+		<div id="logo">
+			<img src="leoke.png" alt="Logo" />
+		</div>
+		<div id="site_content"><div>
+			<h1>Pr&eacute;sentation</h1>
+			<h2>&Agrave; quoi sert-elle ?</h2>
+			<p>La carte <b>L&eacute;ok&eacute;</b> est &agrave; la fois une Makey&nbsp;Makey &lt;<a href="http://www.makeymakey.com/">http://www.makeymakey.com/</a>&gt; augment&eacute;e et une Arduino &lt;<a href="http://www.arduino.cc/">http://www.arduino.cc/</a>&gt;. Par cons&eacute;quent ses possibilit&eacute;s sont tr&egrave;s ouvertes et elle peut &ecirc;tre consid&eacute;r&eacute;e comme une carte &agrave; tout faire. &Agrave; chacun d'y trouver l'utilit&eacute; qui lui est propre.</p>
+			<h2>Pourquoi avoir cr&eacute;&eacute; une nouvelle carte ?</h2>
+			<p>La carte <b>L&eacute;ok&eacute;</b> a &eacute;t&eacute; con&ccedil;ue en premier lieu pour r&eacute;aliser un clone du projet open-hardware Makey&nbsp;Makey. L'id&eacute;e &eacute;tait de simplifier le sch&eacute;ma et adapter les composants selon les prix des fournisseurs afin de partager les frais d'un prototype &agrave; bas-co&ucirc;t.</p>
+			<p>Il s'agissait &eacute;galement d'op&eacute;rer volontairement quelques modifications comme le placement des pads et leur accessibilit&eacute;, ou encore la possibilit&eacute; de convertir la carte en Arduino. &Agrave; mesure que le projet se concr&eacute;tisait, des id&eacute;es nouvelles sont apparues et ont men&eacute; &agrave; cette carte.</p>
+			<h2>Quelles diff&eacute;rences avec l'originale ?</h2>
+			<p>La carte <b>L&eacute;ok&eacute;</b> est totalement compatible avec le logiciel Makey&nbsp;Makey (&agrave; condition de ne pas utiliser les pins D9, D10, D11, EXTRA0, EXTRA2, EXTRA3, EXTRA4 et EXTRA5). Une adaptation du logiciel permet d'avoir davantage d'entr&eacute;es.</p>
+			<p>Par ailleurs la carte peut &ecirc;tre utilis&eacute;e directement en tant qu'Arduino classique, en profitant du connecteur Shield&nbsp;Arduino&nbsp;V3<sup>1</sup>.
+			<p>Elle peut &eacute;galement &ecirc;tre aliment&eacute;e par une autre source que l'USB afin de la rendre autonome lors d'une utilisation en mode Arduino.
+			<p>Aussi les pads permettent diff&eacute;rents types de connexion, comme l'utilisation de pinces croco, la soudure d'un fil, l'utilisation d'une vis...
+			<p class="note"><sup>1</sup>Pr&eacute;visionnel pour le moment, peut &ecirc;tre seulement V2 selon les contraintes m&eacute;caniques et de routage</p>
+			<h2>Quel prix ?</h2>
+			<p>La carte n'est pas &agrave; vendre.</p>
+			<p>Toutefois tous les documents sont disponibles<sup>2</sup> pour la r&eacute;aliser dans le cadre d'un hackerspace par exemple. Avec une dizaine d'exemplaires, il est possible d'obtenir un co&ucirc;t unitaire de l'ordre de 20&euro;. V&eacute;rifiez la disponibilit&eacute; et les prix chez votre fournisseur et adaptez les composants si besoin permet de minimiser les co&ucirc;ts r&eacute;els.</p>
+			<p class="note"><sup>2</sup>Ou seront disponibles au fur et &agrave; mesure de l'avancement</p>
+
+			<h1>Aspects techniques</h1>
+			<h2>Sch&eacute;ma</h2>
+			<p>Les sch&eacute;mas sont en cours de conception.</p>
+			<h2>Placement</h2>
+			<p>Le placement suivant est envisag&eacute;.</p>
+			<p class="center"><img src="placement.png" alt="Placement pr&eacute;visionnel" /></p>
+			<h2>Fonctionnement</h2>
+			<p>L'&eacute;l&eacute;ment capital du montage est la s&eacute;rie de r&eacute;sistances 22M&ohm;. Celles-ci permettent d'amplifier les micro-courants traver&ccedil;ant les objets en tension exploitable par le microcontr&ocirc;leur. Si cette tension passe sous le seuil de niveau bas, le toucher est d&eacute;tect&eacute;. En l'absence de courant, les r&eacute;sistances tirent la ligne &agrave; un 1 logique.</p>
+			<h2>Suppression de la r&eacute;sistance</H2>
+			<p>Dans la plupart des cas, l'imp&eacute;dance des r&eacute;sistances est suffisamment grande pour ne pas influer dans l'utilisation de la carte en tant qu'Arduino. Si toutefois vous &ecirc;tes dans un de ces rares cas o&ugrave; la r&eacute;sistance est g&ecirc;nante, il est possible de couper la petite piste qui part du pad (pas la plus grosse). Un peu d'&eacute;tain permet d'annuler l'op&eacute;ration si besoin.</p>
+
+			<h1>Licence</h1>
+			<h2>Licence</h2>
+			Le pr&eacute;sent design est plac&eacute; sous licence CC BY-SA &lt;<a href="http://creativecommons.org/licenses/by-sa/3.0/fr/">http://creativecommons.org/licenses/by-sa/3.0/fr/</a>&gt;
+			<h2>Raison</h2>
+			<p>Cette carte est &eacute;tablie &agrave; partir des projets Makey&nbsp;Makey et Arduino L&eacute;onardo. Ceux-ci sont plac&eacute;s sous licence CC BY-SA qui stipule notamment qu'en cas d'adaptation la cr&eacute;ation d&eacute;riv&eacute;e doit &ecirc;tre plac&eacute;e sous licence similaire.</p>
+		</div></div>
+	</body>
+</html>

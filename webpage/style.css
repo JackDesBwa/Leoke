@@ -1,0 +1,74 @@
+/* Body */
+body {
+	background: #002d46 url(background.png);
+	color: #333;
+	font-size: 1em;
+	padding: 0 0 40px;
+	font-family: "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif
+}
+
+/* Simple elements */
+a, a:link, a:visited {
+	color : #4c6d79;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+h1, h2 {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	clear: both;
+}
+
+h1 span, h2 span, h3 span {
+	font-size: 0.8em;
+}
+
+img, video {
+	border: none;
+	vertical-align: middle;
+	margin: 10px;
+	max-width:100%;
+}
+
+sup, sub {
+	font-size: 0.7em;
+	padding: 0 0.2em;
+}
+
+p {
+	margin: 5px 0;
+	text-align: justify;
+}
+p.center {
+	text-align: center;
+}
+p.note {
+	font-size: 0.6em;
+}
+
+/* Titles */
+h1 {
+	font-size: 1.6em;
+	color: #d40055;
+	border-bottom: 1px dashed #d40055;
+}
+h2, h3, h4 {
+	font-size: 1.2em;
+	color: #4a0;
+}
+
+/* Header and footer */
+#logo, #site_content {
+	display: table;
+	width: 90%;
+	min-width: 730px;
+	max-width: 1520px;
+	margin: 20px auto;
+	padding: 5px 20px;
+}
+#site_content {
+	background: #fff url(head.png) no-repeat top left;
+	-moz-border-radius: 35px;
+	border-radius: 35px;
+}
