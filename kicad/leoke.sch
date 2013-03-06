@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date mer. 06 mars 2013 01:19:55 CET
+EESchema Schematic File Version 2  date mer. 06 mars 2013 21:26:52 CET
 LIBS:leoke
 EELAYER 25  0
 EELAYER END
@@ -14,33 +14,9 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L LM324 U2
-U 4 1 513689E1
-P 9650 6200
-F 0 "U2" H 9700 6400 60  0000 C CNN
-F 1 "LM324" H 9800 6000 50  0000 C CNN
-	4    9650 6200
-	1    0    0    -1  
-$EndComp
-$Comp
-L LM324 U2
-U 3 1 513689CE
-P 4700 6600
-F 0 "U2" H 4750 6800 60  0000 C CNN
-F 1 "LM324" H 4850 6400 50  0000 C CNN
-	3    4700 6600
-	1    0    0    -1  
-$EndComp
-$Comp
-L LM324 U2
-U 2 1 513689AC
-P 1500 6950
-F 0 "U2" H 1550 7150 60  0000 C CNN
-F 1 "LM324" H 1650 6750 50  0000 C CNN
-	2    1500 6950
-	1    0    0    -1  
-$EndComp
+Connection ~ 7600 2250
+Wire Wire Line
+	7600 2200 7600 2550
 Wire Wire Line
 	9750 3000 9750 3150
 Connection ~ 10100 4750
@@ -313,11 +289,10 @@ Connection ~ 4050 4500
 Connection ~ 2750 1100
 Wire Wire Line
 	9650 2500 9650 2600
-Connection ~ 7600 2250
 Wire Wire Line
 	7900 2050 7750 2050
 Wire Wire Line
-	7900 2250 7600 2250
+	7600 2250 7900 2250
 Wire Wire Line
 	7900 2450 7700 2450
 Wire Wire Line
@@ -449,7 +424,7 @@ Wire Wire Line
 Wire Wire Line
 	7700 1050 7900 1050
 Wire Wire Line
-	7900 2550 7600 2550
+	7600 2550 7900 2550
 Wire Wire Line
 	7900 2050 7900 2150
 Wire Wire Line
@@ -689,6 +664,33 @@ Wire Wire Line
 	10100 5150 10100 5050
 Wire Wire Line
 	9750 2800 9750 2500
+$Comp
+L LM324 U2
+U 4 1 513689E1
+P 9650 6200
+F 0 "U2" H 9700 6400 60  0000 C CNN
+F 1 "LM324" H 9800 6000 50  0000 C CNN
+	4    9650 6200
+	1    0    0    -1  
+$EndComp
+$Comp
+L LM324 U2
+U 3 1 513689CE
+P 4700 6600
+F 0 "U2" H 4750 6800 60  0000 C CNN
+F 1 "LM324" H 4850 6400 50  0000 C CNN
+	3    4700 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L LM324 U2
+U 2 1 513689AC
+P 1500 6950
+F 0 "U2" H 1550 7150 60  0000 C CNN
+F 1 "LM324" H 1650 6750 50  0000 C CNN
+	2    1500 6950
+	1    0    0    -1  
+$EndComp
 Text Label 9950 3150 2    60   ~ 0
 RST
 $Comp
