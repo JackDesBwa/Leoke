@@ -1,10 +1,12 @@
 /* Body */
+html, body { margin: 0; padding: 0; }
 body {
-	background: #002d46 url(background.png);
-	color: #333;
+	background: #002d46 url(background.png) top center;
+	color: #fff;
 	font-size: 1em;
-	padding: 0 0 40px;
-	font-family: "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif
+	padding: 0;
+	font-family: "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+	margin-bottom: 20px;
 }
 
 /* Simple elements */
@@ -84,16 +86,18 @@ table tr:hover {
 }
 
 /* Header and footer */
-#logo, #site_content {
+#head {
+	background: url(head.jpg) no-repeat top center;
+	height: 390px;
+}
+#site_content {
+	background: #fff;
+	color: #333;
 	display: table;
 	width: 90%;
 	min-width: 730px;
 	max-width: 1520px;
-	margin: 20px auto;
-	padding: 5px 20px;
-}
-#site_content {
-	background: #fff url(head.png) no-repeat top left;
-	-moz-border-radius: 35px;
+	margin: 0 auto;
+	padding: 10px 20px;
 	border-radius: 35px;
 }

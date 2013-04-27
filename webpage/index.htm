@@ -1,41 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr" dir="ltr">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<title>L&eacute;ok&eacute;</title>
-		<link rel="stylesheet" type="text/css" href="grid.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="style.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="print.css" media="print" />
 	</head>
 	<body>
-		<div id="logo">
-			<img src="leoke.png" alt="Logo" />
-		</div>
+		<div id="head"></div>
 		<div id="site_content"><div>
 			<h1>Pr&eacute;sentation</h1>
 			<h2>&Agrave; quoi sert-elle ?</h2>
-			<p>La carte <b>L&eacute;ok&eacute;</b> est &agrave; la fois une Makey&nbsp;Makey &lt;<a href="http://www.makeymakey.com/">http://www.makeymakey.com/</a>&gt; augment&eacute;e et une Arduino &lt;<a href="http://www.arduino.cc/">http://www.arduino.cc/</a>&gt;. Par cons&eacute;quent ses possibilit&eacute;s sont tr&egrave;s ouvertes et elle peut &ecirc;tre consid&eacute;r&eacute;e comme une carte &agrave; tout faire. &Agrave; chacun d'y trouver l'utilit&eacute; qui lui est propre.</p>
+			<p>La carte <b>L&eacute;ok&eacute;</b> est &agrave; la fois une Makey&nbsp;Makey<sup><a href="#note1">[1]</a></sup> augment&eacute;e et une Arduino<sup><a href="#note2">[2]</a></sup>. Par cons&eacute;quent ses possibilit&eacute;s sont tr&egrave;s ouvertes et elle peut &ecirc;tre consid&eacute;r&eacute;e comme une carte &agrave; tout faire. &Agrave; chacun d'y trouver l'utilit&eacute; qui lui est propre.</p>
 			<h2>Pourquoi avoir cr&eacute;&eacute; une nouvelle carte ?</h2>
-			<p>La carte <b>L&eacute;ok&eacute;</b> a &eacute;t&eacute; con&ccedil;ue en premier lieu pour r&eacute;aliser un clone du projet open-hardware Makey&nbsp;Makey. L'id&eacute;e &eacute;tait de simplifier le sch&eacute;ma et adapter les composants selon les prix des fournisseurs afin de partager les frais d'un prototype &agrave; bas-co&ucirc;t.</p>
-			<p>Il s'agissait &eacute;galement d'op&eacute;rer volontairement quelques modifications comme le placement des pads et leur accessibilit&eacute;, ou encore la possibilit&eacute; de convertir la carte en Arduino. &Agrave; mesure que le projet se concr&eacute;tisait, des id&eacute;es nouvelles sont apparues et ont men&eacute; &agrave; cette carte.</p>
+			<p>La carte <b>L&eacute;ok&eacute;</b> a &eacute;t&eacute; con&ccedil;ue en premier lieu pour r&eacute;aliser un clone du projet open-hardware Makey&nbsp;Makey<sup><a href="#note1">[1]</a></sup>. L'id&eacute;e &eacute;tait de simplifier le sch&eacute;ma et adapter les composants selon les prix des fournisseurs afin de partager les frais d'un prototype &agrave; bas-co&ucirc;t.</p>
+			<p>Il s'agissait &eacute;galement d'op&eacute;rer volontairement quelques modifications comme le placement des pads et leur accessibilit&eacute;, ou encore la possibilit&eacute; de convertir la carte en Arduino<sup><a href="#note2">[2]</a></sup>. &Agrave; mesure que le projet se concr&eacute;tisait, des id&eacute;es nouvelles sont apparues et ont men&eacute; &agrave; cette carte.</p>
 			<h2>Quelles diff&eacute;rences avec l'originale ?</h2>
-			<p>La carte <b>L&eacute;ok&eacute;</b> est totalement compatible avec le logiciel Makey&nbsp;Makey (&agrave; condition de ne pas utiliser les pins D9, D10, D11, EXTRA0, EXTRA2, EXTRA3, EXTRA4 et EXTRA5). Une adaptation du logiciel permet d'avoir davantage d'entr&eacute;es.</p>
-			<p>Par ailleurs la carte peut &ecirc;tre utilis&eacute;e directement en tant qu'Arduino classique, en profitant du connecteur Shield&nbsp;Arduino&nbsp;V2.
-			<p>Elle peut &eacute;galement &ecirc;tre aliment&eacute;e par une autre source que l'USB afin de la rendre autonome lors d'une utilisation en mode Arduino.
-			<p>Aussi les pads permettent diff&eacute;rents types de connexion, comme l'utilisation de pinces croco, la soudure d'un fil, l'utilisation d'une vis...
+			<p>La carte <b>L&eacute;ok&eacute;</b> est totalement compatible avec le logiciel Makey&nbsp;Makey<sup><a href="#note1">[1]</a></sup> (&agrave; condition de ne pas utiliser les pins D9, D10, D11, EXTRA0, EXTRA2, EXTRA3, EXTRA4 et EXTRA5). Une adaptation du logiciel permet d'avoir davantage d'entr&eacute;es.</p>
+			<p>Par ailleurs la carte peut &ecirc;tre utilis&eacute;e directement en tant qu'Arduino<sup><a href="#note2">[2]</a></sup> classique, en profitant du connecteur Shield&nbsp;Arduino&nbsp;V2.</p>
+			<p>Elle peut &eacute;galement &ecirc;tre aliment&eacute;e par une autre source que l'USB afin de la rendre autonome lors d'une utilisation en mode Arduino<sup><a href="#note2">[2]</a></sup>.</p>
+			<p>Aussi les pads permettent diff&eacute;rents types de connexion, comme l'utilisation de pinces croco, la soudure d'un fil, l'utilisation d'une vis...</p>
 			<h2>Quel prix ?</h2>
 			<p>La carte n'est pas &agrave; vendre.</p>
-			<p>Toutefois tous les documents sont disponibles sur le d&eacute;p&ocirc;t GitHub &lt;<a href="https://github.com/JackDesBwa/Leoke">https://github.com/JackDesBwa/Leoke</a>&gt; pour la r&eacute;aliser dans le cadre d'un hackerspace par exemple. Avec une dizaine d'exemplaires, il est possible d'obtenir un co&ucirc;t unitaire de l'ordre de 25&euro;. V&eacute;rifier la disponibilit&eacute; et les prix chez votre fournisseur et adapter les composants si besoin permet de minimiser les co&ucirc;ts de production r&eacute;els.</p>
+			<p>Toutefois tous les documents sont disponibles sur un d&eacute;p&ocirc;t<sup><a href="#note3">[3]</a></sup> pour la r&eacute;aliser dans le cadre d'un hackerspace par exemple. Avec une dizaine d'exemplaires, il est possible d'obtenir un co&ucirc;t unitaire de l'ordre de 25&euro;. V&eacute;rifier la disponibilit&eacute; et les prix chez votre fournisseur et adapter les composants si besoin permet de minimiser les co&ucirc;ts de production r&eacute;els.</p>
 
 			<h1>Aspects techniques</h1>
 			<h2>Sch&eacute;ma</h2>
-			<p>Une version PDF est disponible sur le d&eacute;p&ocirc;t GitHub &lt;<a href="https://github.com/JackDesBwa/Leoke">https://github.com/JackDesBwa/Leoke</a>&gt;</p>
+			<p>Une version PDF est disponible sur le d&eacute;p&ocirc;t<sup><a href="#note3">[3]</a></sup>.</p>
 			<p class="center"><img src="schematics.png" alt="Sch&eacute;ma" /></p>
 			<h2>Routage</h2>
-			<p>Voici une vue des fichiers ayant &eacute;t&eacute; envoy&eacute;s en production.</p>
-			<p class="center"><img src="front.png" alt="Face avant" /></p>
-			<p class="center"><img src="back.png" alt="Face arri&egrave;re" /></p>
+			<p>Voici une photo des cartes re&ccedil;ues de production, après chirurgie pour retirer une erreur de plan de masse. Cette erreur a été corrigée dans les fichiers du d&eacute;p&ocirc;t<sup><a href="#note3">[3]</a></sup>.</p>
+			<p class="center"><img src="carte_leoke.jpg" alt="Carte re&ccedil;ue" /></p>
 			<h2>Fonctionnement</h2>
 			<p>L'&eacute;l&eacute;ment capital du montage est la s&eacute;rie de r&eacute;sistances 22M&ohm;. Celles-ci permettent d'amplifier les micro-courants traver&ccedil;ant les objets en tension exploitable par le microcontr&ocirc;leur. Si cette tension passe sous le seuil de niveau bas, le toucher est d&eacute;tect&eacute;. En l'absence de courant, les r&eacute;sistances tirent la ligne &agrave; un 1 logique.</p>
 			<h2>Suppression de la r&eacute;sistance</H2>
@@ -48,8 +43,8 @@
 				<tr>
 					<th>L&eacute;ok&eacute;</th>
 					<th>ATMEGA<br/>32U4</th>
-					<th>Makey&nbsp;Makey<sup>1</sup><br/><p class="center note"><sup>1</sup> La correspondance n'a pas été vérifiée</p></th>
-					<th>Arduino<br/>(+&nbsp;extas)</th>
+					<th>Makey&nbsp;Makey<sup><a href="#note1">[1]</a></sup><br/><p class="center note">La correspondance n'a pas été vérifiée</p></th>
+					<th>Arduino<sup><a href="#note2">[2]</a></sup><br/>(+&nbsp;extas)</th>
 					<th colspan="5">Fonctions particuli&egrave;res</th>
 				</tr>
 				<tr><td>1</td><td>PF5</td><td>D&eacute;placer la souris vers la droite</td><td>A2</td><td title="General Purpose Input Output">GPIO</td><td title="Analog to Digital Converter channel 5">ADC5</td><td></td><td></td><td></td></tr>
@@ -82,9 +77,14 @@
 
 			<h1>Licence</h1>
 			<h2>Licence</h2>
-			Le pr&eacute;sent design est plac&eacute; sous licence CC BY-SA &lt;<a href="http://creativecommons.org/licenses/by-sa/3.0/fr/">http://creativecommons.org/licenses/by-sa/3.0/fr/</a>&gt;
+			<p>Le pr&eacute;sent design est plac&eacute; sous licence CC BY-SA<sup><a href="#note4">[4]</a></sup>.</p>
 			<h2>Raison</h2>
-			<p>Cette carte est &eacute;tablie &agrave; partir des projets Makey&nbsp;Makey et Arduino L&eacute;onardo. Ceux-ci sont plac&eacute;s sous licence CC BY-SA qui stipule notamment qu'en cas d'adaptation la cr&eacute;ation d&eacute;riv&eacute;e doit &ecirc;tre plac&eacute;e sous licence similaire.</p>
+			<p>Cette carte est &eacute;tablie &agrave; partir des projets Makey&nbsp;Makey<sup><a href="#note1">[1]</a></sup> et Arduino<sup><a href="#note2">[2]</a></sup> L&eacute;onardo. Ceux-ci sont plac&eacute;s sous licence CC BY-SA<sup><a href="#note4">[4]</a></sup> qui stipule notamment qu'en cas d'adaptation la cr&eacute;ation d&eacute;riv&eacute;e doit &ecirc;tre plac&eacute;e sous licence similaire.</p>
+			<h1>Références</h1>
+			<p><sup id="note1">[1]</sup> Makey&nbsp;Makey &lt;<a href="http://www.makeymakey.com/">http://www.makeymakey.com/</a>&gt;</p>
+			<p><sup id="note2">[2]</sup> Arduino &lt;<a href="http://www.arduino.cc/">http://www.arduino.cc/</a>&gt;</p>
+			<p><sup id="note3">[3]</sup> D&eacute;p&ocirc;t GitHub &lt;<a href="https://github.com/JackDesBwa/Leoke">https://github.com/JackDesBwa/Leoke</a>&gt;</p>
+			<p><sup id="note4">[4]</sup> Licence Creative Commons BY-SA &lt;<a href="http://creativecommons.org/licenses/by-sa/3.0/fr/">http://creativecommons.org/licenses/by-sa/3.0/fr/</a>&gt;</p>
 		</div></div>
 	</body>
 </html>
