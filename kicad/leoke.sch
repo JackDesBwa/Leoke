@@ -1,13 +1,12 @@
-EESchema Schematic File Version 2  date dim. 07 avril 2013 18:45:01 CEST
+EESchema Schematic File Version 2
 LIBS:leoke
-LIBS:leoke-cache
 EELAYER 27 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title "Léoké, clone de MakeyMakey"
-Date "7 apr 2013"
+Title "Léoké (RevB), clone de MakeyMakey"
+Date "13 sep 2013"
 Rev "1"
 Comp "http://leoke.desbwa.org/"
 Comment1 "Licence CC BY-SA 3.0 (détails sur site web)"
@@ -245,17 +244,9 @@ Connection ~ 7900 4000
 Wire Wire Line
 	6350 2850 6200 2850
 Wire Wire Line
-	9250 1600 9500 1600
-Wire Wire Line
-	9100 1400 9500 1400
-Wire Wire Line
 	2450 3850 2450 3800
 Wire Wire Line
 	2800 3200 2450 3200
-Wire Wire Line
-	5150 3300 4800 3300
-Wire Wire Line
-	5150 3500 4800 3500
 Connection ~ 1650 4500
 Connection ~ 1850 4500
 Connection ~ 2250 4500
@@ -424,22 +415,12 @@ Connection ~ 2650 4500
 Connection ~ 1250 4500
 Connection ~ 1450 4500
 Wire Wire Line
-	5150 3600 4800 3600
-Wire Wire Line
-	5150 3400 4800 3400
-Wire Wire Line
-	4800 3700 5150 3700
-Wire Wire Line
 	2450 3200 2450 3300
-Wire Wire Line
-	7550 2650 7900 2650
 Wire Wire Line
 	2800 3450 2800 3850
 Connection ~ 1900 2250
 Wire Wire Line
 	1900 2050 1900 2350
-Wire Wire Line
-	9500 1500 9100 1500
 Wire Wire Line
 	10300 1400 10450 1400
 Wire Wire Line
@@ -449,11 +430,7 @@ Wire Wire Line
 Wire Wire Line
 	10450 1600 10450 1650
 Wire Wire Line
-	10700 1500 10300 1500
-Wire Wire Line
 	10250 2500 10250 2700
-Wire Wire Line
-	10250 2700 10650 2700
 Wire Wire Line
 	6350 3050 6200 3050
 Wire Wire Line
@@ -872,7 +849,7 @@ L C Cusb1
 U 1 1 5133A4D0
 P 750 2350
 F 0 "Cusb1" H 800 2450 50  0000 L CNN
-F 1 "22µF" H 800 2200 50  0000 L CNN
+F 1 "10µF" H 800 2200 50  0000 L CNN
 F 2 "" H 750 2350 60  0001 C CNN
 F 3 "" H 750 2350 60  0001 C CNN
 	1    750  2350
@@ -944,7 +921,7 @@ F 3 "" H 9250 6300 60  0001 C CNN
 	1    9250 6300
 	0    -1   -1   0   
 $EndComp
-Text Label 10700 6500 2    60   ~ 0
+Text Label 10700 5900 2    60   ~ 0
 5VNP
 $Comp
 L PWR_FLAG #FLG09
@@ -959,7 +936,7 @@ F 3 "" H 8150 4900 60  0001 C CNN
 $EndComp
 Text Label 1100 2500 1    60   ~ 0
 VUSB
-Text Label 10700 5900 2    60   ~ 0
+Text Label 10700 6500 2    60   ~ 0
 VUSB
 $Comp
 L MOS_P Q2
@@ -1137,9 +1114,9 @@ F 3 "" H 1500 6300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 850  6850 0    60   ~ 0
-EXTRA4
+D18
 Text Label 850  6200 0    60   ~ 0
-EXTRA0
+D17
 $Comp
 L R Rpad22
 U 1 1 51313F39
@@ -1196,15 +1173,15 @@ F 3 "" H 5050 4750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 1200 5300 1    60   ~ 0
-EXTRA0
+D17
 Text Label 1400 5300 1    60   ~ 0
-EXTRA1
+D15
 Text Label 1600 5300 1    60   ~ 0
-EXTRA2
+D16
 Text Label 1800 5300 1    60   ~ 0
-EXTRA3
+D14
 Text Label 3000 5300 1    60   ~ 0
-EXTRA4
+D18
 $Comp
 L PAD S21
 U 1 1 51313F34
@@ -1444,10 +1421,10 @@ F 3 "" H 6700 2950 60  0001 C CNN
 	1    6700 2950
 	1    0    0    -1  
 $EndComp
-Text Label 10650 2700 2    60   ~ 0
-EXTRA5
-Text Label 10700 1500 2    60   ~ 0
-EXTRA2
+Text Label 10400 2700 2    60   ~ 0
+L0
+Text Label 10500 1500 2    60   ~ 0
+D16
 $Comp
 L GND #PWR021
 U 1 1 512E946F
@@ -1470,14 +1447,14 @@ F 3 "" H 10450 1250 60  0001 C CNN
 	1    10450 1250
 	1    0    0    -1  
 $EndComp
-Text Label 9250 1600 0    60   ~ 0
+Text Label 9300 1600 0    60   ~ 0
 RST
-Text Label 9100 1500 0    60   ~ 0
-EXTRA1
-Text Label 9100 1400 0    60   ~ 0
-EXTRA3
-Text Label 7550 2650 0    60   ~ 0
-EXTRA4
+Text Label 9300 1500 0    60   ~ 0
+D15
+Text Label 9300 1400 0    60   ~ 0
+D14
+Text Label 7700 2650 0    60   ~ 0
+D18
 $Comp
 L +5V #PWR023
 U 1 1 512E8130
@@ -1754,9 +1731,9 @@ F 3 "" H 2450 3550 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Text Label 2450 3200 0    60   ~ 0
-EXTRA5
-Text Label 5150 3700 2    60   ~ 0
-EXTRA4
+L0
+Text Label 5000 3700 2    60   ~ 0
+D18
 Text Label 4600 5300 1    60   ~ 0
 D13
 Text Label 3400 5300 1    60   ~ 0
@@ -2199,14 +2176,14 @@ F 3 "" H 8250 1400 60  0001 C CNN
 	1    8250 1400
 	1    0    0    -1  
 $EndComp
-Text Label 5150 3300 2    60   ~ 0
-EXTRA0
-Text Label 5150 3500 2    60   ~ 0
-EXTRA2
-Text Label 5150 3400 2    60   ~ 0
-EXTRA1
-Text Label 5150 3600 2    60   ~ 0
-EXTRA3
+Text Label 5000 3300 2    60   ~ 0
+D17
+Text Label 5000 3500 2    60   ~ 0
+D16
+Text Label 5000 3400 2    60   ~ 0
+D15
+Text Label 5000 3600 2    60   ~ 0
+D14
 Text Label 5000 3200 2    60   ~ 0
 D13
 Text Label 5000 3100 2    60   ~ 0
@@ -2464,4 +2441,26 @@ Wire Wire Line
 	7350 4200 7400 4200
 Wire Wire Line
 	7400 4200 7400 4250
+Wire Wire Line
+	5000 3600 4800 3600
+Wire Wire Line
+	5000 3500 4800 3500
+Wire Wire Line
+	4800 3400 5000 3400
+Wire Wire Line
+	5000 3300 4800 3300
+Wire Wire Line
+	9300 1400 9500 1400
+Wire Wire Line
+	9500 1500 9300 1500
+Wire Wire Line
+	9300 1600 9500 1600
+Wire Wire Line
+	10500 1500 10300 1500
+Wire Wire Line
+	5000 3700 4800 3700
+Wire Wire Line
+	7700 2650 7900 2650
+Wire Wire Line
+	10250 2700 10400 2700
 $EndSCHEMATC
