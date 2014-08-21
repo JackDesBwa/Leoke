@@ -39,9 +39,51 @@ public:
 	virtual int read(void);
 	virtual void flush(void);
 	virtual size_t write(uint8_t);
+	using Print::write; // pull in write(str) and write(buf, size) from Print
 	operator bool();
 };
 extern Serial_ Serial;
+
+
+//================================================================================
+//================================================================================
+//  MIDI_USB
+
+#define MIDI_BUFFER_SIZE 64
+
+struct midi_buffer
+{
+    unsigned char buffer[MIDI_BUFFER_SIZE];
+    volatile int head;
+    volatile int tail;
+};
+
+typedef struct
+{
+    uint8_t type;
+    uint8_t m1;
+    uint8_t m2;
+    uint8_t m3;
+} MIDIEvent;
+
+extern const MIDIEvent MIDI_EVENT_NONE;
+
+class MIDIUSB_
+{
+private:
+    midi_buffer _rx_buffer;
+public:
+
+    virtual int available(void);
+    virtual void accept(void);
+    virtual MIDIEvent peek(void);
+    virtual MIDIEvent read(void);
+    virtual void flush(void);
+    virtual size_t write(MIDIEvent);
+    operator bool();
+};
+extern MIDIUSB_ MIDIUSB;
+
 
 //================================================================================
 //================================================================================
@@ -173,6 +215,14 @@ bool	MSC_Data(uint8_t rx,uint8_t tx);
 int		CDC_GetInterface(uint8_t* interfaceNum);
 int		CDC_GetDescriptor(int i);
 bool	CDC_Setup(Setup& setup);
+
+//================================================================================
+//================================================================================
+//  MIDI/AC 'Driver'
+
+int     AC_GetInterface(uint8_t* interfaceNum);
+int     MIDI_GetInterface(uint8_t* interfaceNum);
+bool    MIDI_Setup(Setup& setup);
 
 //================================================================================
 //================================================================================

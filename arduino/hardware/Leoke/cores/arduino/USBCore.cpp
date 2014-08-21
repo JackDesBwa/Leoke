@@ -326,7 +326,12 @@ const u8 _initEndpoints[] =
 #endif
 
 #ifdef HID_ENABLED
-	EP_TYPE_INTERRUPT_IN		// HID_ENDPOINT_INT
+	EP_TYPE_INTERRUPT_IN,		// HID_ENDPOINT_INT
+#endif
+
+#ifdef MIDI_ENABLED
+    EP_TYPE_BULK_OUT,
+    EP_TYPE_BULK_IN,
 #endif
 };
 
@@ -370,6 +375,11 @@ bool ClassInterfaceRequest(Setup& setup)
 #ifdef HID_ENABLED
 	if (HID_INTERFACE == i)
 		return HID_Setup(setup);
+#endif
+        
+#ifdef MIDI_ENABLED
+    if (MIDI_INTERFACE == i)
+        return MIDI_Setup(setup);
 #endif
 	return false;
 }
@@ -435,6 +445,11 @@ int SendInterfaces()
 
 #ifdef HID_ENABLED
 	total += HID_GetInterface(&interfaces);
+#endif
+
+#ifdef MIDI_ENABLED
+	total += AC_GetInterface(&interfaces);
+	total += MIDI_GetInterface(&interfaces);
 #endif
 
 	return interfaces;
@@ -611,7 +626,11 @@ ISR(USB_GEN_vect)
 		while (USB_Available(CDC_RX))	// Handle received bytes (if any)
 			Serial.accept();
 #endif
-		
+#ifdef MIDI_ENABLED
+		USB_Flush(MIDI_TX);
+		while (USB_Available(MIDI_RX))
+			MIDIUSB.accept();
+#endif
 		// check whether the one-shot period has elapsed.  if so, turn off the LED
 		if (TxLEDPulse && !(--TxLEDPulse))
 			TXLED0;
