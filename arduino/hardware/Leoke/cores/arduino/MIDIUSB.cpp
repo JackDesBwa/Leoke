@@ -153,6 +153,11 @@ MIDIUSB_::operator bool() {
     return true;
 }
 
+void MIDIUSB_::note(bool on, MidiNote note, MidiOctave octave, MidiChannel channel, char velocity) {
+    MIDIEvent evt = {0x08 | on, 0x80 | (on << 4) | channel, note + octave, velocity};
+    MIDIUSB.write(evt);
+}
+
 MIDIUSB_ MIDIUSB;
 
 

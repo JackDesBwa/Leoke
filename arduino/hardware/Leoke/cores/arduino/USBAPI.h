@@ -3,6 +3,8 @@
 #ifndef __USBAPI__
 #define __USBAPI__
 
+#include <MIDIUSB.h>
+
 #if defined(USBCON)
 
 //================================================================================
@@ -79,6 +81,7 @@ public:
     virtual MIDIEvent peek(void);
     virtual MIDIEvent read(void);
     virtual void flush(void);
+    virtual void note(bool on, MidiNote note, MidiOctave octave, MidiChannel channel, char velocity);
     virtual size_t write(MIDIEvent);
     operator bool();
 };
