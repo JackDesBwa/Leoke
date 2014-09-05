@@ -26,6 +26,7 @@
 #define Pins_Arduino_h
 
 #include <avr/pgmspace.h>
+#define LEOKE
 
 #define TX_RX_LED_INIT	do { } while (0) //DDRD |= (1<<5), DDRB |= (1<<0)
 #define TXLED0		do { } while (0) //	PORTD |= (1<<5)
