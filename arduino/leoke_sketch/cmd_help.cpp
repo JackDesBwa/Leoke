@@ -16,7 +16,7 @@ void cmd_help(Stream * ser, int argc, char ** argv) {
   ser->print(F("\
 # print    - Print current config\r\n\
 # pullup   - Activate pullup\r\n\
-# read     - Read GPIO state\
+# read     - Read GPIO state\r\n\
 # reset    - Reset configuration\
 "));
 }
