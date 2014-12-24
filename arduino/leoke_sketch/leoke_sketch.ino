@@ -37,7 +37,8 @@ long time;
 ** Shell commands **
 *******************/
 
-const PROGMEM char * const motd = "\
+const PROGMEM char * const motd = "\r\n\
+# ***************************\r\n\
 #  _                _\r\n\
 # | |     ____     | |   ____\r\n\
 # | |     ___  ___ | | _____\r\n\
@@ -74,7 +75,8 @@ void setup() {
   Mouse.begin();
   while(!Serial);
   time = millis();
-  cmd_reset(&Serial, 1, (char**) "quiet");
+  char * arg = "load";
+  cmd_eeprom(&Serial, 1, &arg);
   shell_init(Serial, shellconfig, sizeof(shellconfig)/sizeof(*shellconfig), motd);
 }
 
