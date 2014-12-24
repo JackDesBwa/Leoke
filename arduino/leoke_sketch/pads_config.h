@@ -31,7 +31,9 @@ struct Pad {
 #define PADFLAG_DEBUG_MASK 0x10
 #define PADFLAG_PULLUP_MASK 0x20
 
-extern Pad pads[];
+#define NBPADS 32 // Very ugly, but Arduino pseudo-abstraction do not allow to do it nicely
+                  // ...and you do not want to know that there is no boundary check in official Arduino API
+extern Pad pads[NBPADS];
 
 static inline int str_to_pin(char * str) {
   if (*str == 0) return -1;

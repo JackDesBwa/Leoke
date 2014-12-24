@@ -20,6 +20,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+#include <EEPROM.h> // Needed because of Arduino scrap
+
 #include "shell.h"
 #include "pads_config.h"
 #include "cmds.h"
@@ -28,8 +30,6 @@ THE SOFTWARE.
 ** Data for touch and events **
 ******************************/
 
-const int NBPADS = 32; // Very ugly, but Arduino pseudo-abstraction do not allow to do it nicely
-                       // ...and you do not want to know that there is no boundary check in official Arduino API
 Pad pads[NBPADS];
 long time;
 
@@ -51,6 +51,7 @@ const PROGMEM char * const motd = "\
 
 const ShellConf shellconfig[] = {
   {"debug", cmd_debug},
+  {"eeprom", cmd_eeprom},
   {"help", cmd_help},
   {"keyboard", cmd_keyboard},
 #ifdef MIDI_ENABLED

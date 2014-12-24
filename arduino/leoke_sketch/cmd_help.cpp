@@ -5,6 +5,7 @@ void cmd_help(Stream * ser, int argc, char ** argv) {
   ser->print(F("\
 # HELP\r\n\
 # debug    - Print debug messages on touch\r\n\
+# eeprom   - Save/resore configuration in EEPROM\r\n\
 # help     - This help\r\n\
 # keyboard - Set keyboard key\r\n\
 "));

@@ -3,6 +3,8 @@
 
 void cmd_debug(Stream * ser, int argc, char ** argv);
 
+void cmd_eeprom(Stream * ser, int argc, char ** argv);
+
 void cmd_help(Stream * ser, int argc, char ** argv);
 
 void cmd_keyboard(Stream * ser, int argc, char ** argv);
