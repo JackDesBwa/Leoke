@@ -104,7 +104,7 @@ void cmd_midi(Stream * ser, int argc, char ** argv) {
             ser->print(F("# MIDI wrong channel"));
             return;
           }
-          channel = MidiChannel(tmpchannel);
+          channel = MidiChannel(tmpchannel - 1);
         }
 
         if (argc == 4) {
