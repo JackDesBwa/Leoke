@@ -78,6 +78,13 @@ void setup() {
   char * arg = "load";
   cmd_eeprom(&Serial, 1, &arg);
   shell_init(Serial, shellconfig, sizeof(shellconfig)/sizeof(*shellconfig), motd);
+  for (int i = 0; i < NBPADS; ++i) {
+    digitalWrite(i, LOW);
+    if (pads[i].flags & PADFLAG_PULLUP_MASK)
+      pinMode(i, INPUT_PULLUP);
+    else
+      pinMode(i, INPUT);
+  }
 }
 
 // Loop function
