@@ -1,0 +1,72 @@
+#!/usr/bin/expect
+
+puts "This script uses uucp to setup an azerty keyboard on Léoké"
+
+# Connection
+set tty [lindex $argv 0]
+if {$tty eq ""} {
+	puts "Please specify a tty"
+	exit 1
+}
+spawn cu -l $tty
+
+send "\n"
+expect "$ "
+send "reset\n"
+expect "$ "
+
+send "debug on L1\n"
+expect "$ "
+send "debug on L2\n"
+expect "$ "
+send "debug on L3\n"
+expect "$ "
+send "debug on L4\n"
+expect "$ "
+send "debug on L5\n"
+expect "$ "
+send "debug on L6\n"
+expect "$ "
+send "debug on L7\n"
+expect "$ "
+send "debug on L8\n"
+expect "$ "
+send "debug on L9\n"
+expect "$ "
+send "debug on L10\n"
+expect "$ "
+send "debug on L11\n"
+expect "$ "
+send "debug on L12\n"
+expect "$ "
+send "debug on L13\n"
+expect "$ "
+send "debug on L14\n"
+expect "$ "
+send "debug on L15\n"
+expect "$ "
+send "debug on L16\n"
+expect "$ "
+send "debug on L17\n"
+expect "$ "
+send "debug on L18\n"
+expect "$ "
+send "debug on L19\n"
+expect "$ "
+send "debug on L20\n"
+expect "$ "
+send "debug on L21\n"
+expect "$ "
+send "debug on L22\n"
+expect "$ "
+send "debug on L23\n"
+expect "$ "
+send "debug on L24\n"
+expect "$ "
+send "debug on L25\n"
+expect "$ "
+
+puts ""
+puts ""
+puts "Type '~.' to quit"
+interact

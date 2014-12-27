@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+
+puts "This script uses uucp to print config"
+
+# Connection
+set tty [lindex $argv 0]
+if {$tty eq ""} {
+	puts "Please specify a tty"
+	exit 1
+}
+spawn cu -l $tty
+
+send "\n"
+expect "$ "
+send "print all\n"
+expect "$ "
