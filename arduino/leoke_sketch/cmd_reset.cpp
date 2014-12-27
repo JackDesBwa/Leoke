@@ -17,6 +17,9 @@ void cmd_reset(Stream * ser, int argc, char ** argv) {
       pads[i].key = ' ';
       pads[i].btn = 0;
       pads[i].flags = 0;
+
+      digitalWrite(i, LOW);
+      pinMode(i, INPUT);
     }
   } else {
     ser->print(F("\
