@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <EEPROM.h>
+#include "shell.h"
 #include "pads_config.h"
 #include "cmds.h"
 
@@ -53,7 +54,7 @@ void cmd_eeprom(Stream * ser, int argc, char ** argv) {
 		      EEPROM.read(1) == 'E' &&
 		      EEPROM.read(2) == 'O' &&
 		      EEPROM.read(3) == 'K')) {
-			ser->print(F("# EEPROM data are invalid"));
+			ser->print(F(SHELL_COMMENT " EEPROM data are invalid"));
 		}
 		for (i = 0; i < sizeof(pads); ++i) {
 			*pdata = EEPROM.read(LEOKE_EEPROM_DATASTART + i);
@@ -63,10 +64,10 @@ void cmd_eeprom(Stream * ser, int argc, char ** argv) {
 		crc_stored = EEPROM.read(LEOKE_EEPROM_DATASTART + sizeof(pads));
 		crc_stored += EEPROM.read(LEOKE_EEPROM_DATASTART + sizeof(pads)+1) << 8;
 		if (crc != crc_stored || EEPROM.read(LEOKE_EEPROM_DATASTART + sizeof(pads)+2) != 'E') {
-			ser->println(F("# EEPROM data are invalid"));
+			ser->println(F(SHELL_COMMENT " EEPROM data are invalid"));
 			cmd_reset(ser, 0, 0);
 		} else {
-			ser->print(F("# Configuration restored"));
+			ser->print(F(SHELL_COMMENT " Configuration restored"));
 		}
 
 	} else if (argc == 1 && !strcmp(argv[0], "save")) {
@@ -85,8 +86,8 @@ void cmd_eeprom(Stream * ser, int argc, char ** argv) {
 		EEPROM.write(LEOKE_EEPROM_DATASTART + sizeof(pads), crc);
 		EEPROM.write(LEOKE_EEPROM_DATASTART + sizeof(pads)+1, crc >> 8);
 		EEPROM.write(LEOKE_EEPROM_DATASTART + sizeof(pads)+2, 'E');
-		ser->print(F("# Configuration saved"));
+		ser->print(F(SHELL_COMMENT " Configuration saved"));
 	} else {
-		ser->print(F("# usage: eeprom <load|save>\r\n# Load or save configuration in EEPROM"));
+		ser->print(F(SHELL_COMMENT " usage: eeprom <load|save>\r\n" SHELL_COMMENT " Load or save configuration in EEPROM"));
 	}
 }

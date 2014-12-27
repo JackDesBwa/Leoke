@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "shell.h"
 #include "pads_config.h"
 
 void cmd_pullup_printconfig(Stream * ser, int pin) {
@@ -12,7 +13,7 @@ void cmd_pullup(Stream * ser, int argc, char ** argv) {
   if (argc == 1) {
     // pullup on
     if (!strcmp("on", argv[0])) {
-      ser->print(F("# PULLUP active all pads"));
+      ser->print(F(SHELL_COMMENT " PULLUP active all pads"));
       for (int i = 0; i < NBPADS; ++i) {
         pads[i].flags |= PADFLAG_PULLUP_MASK;
         pinMode(i, INPUT_PULLUP);
@@ -20,7 +21,7 @@ void cmd_pullup(Stream * ser, int argc, char ** argv) {
 
     // pullup off
     } else if (!strcmp("off", argv[0])) {
-      ser->print(F("# PULLUP disable all pads"));
+      ser->print(F(SHELL_COMMENT " PULLUP disable all pads"));
       for (int i = 0; i < NBPADS; ++i) {
         pads[i].flags &= ~PADFLAG_PULLUP_MASK;
         pinMode(i, INPUT);
@@ -28,7 +29,7 @@ void cmd_pullup(Stream * ser, int argc, char ** argv) {
 
     // pullup <other>
     } else {
-        ser->print(F("# PULLUP wrong argument"));
+        ser->print(F(SHELL_COMMENT " PULLUP wrong argument"));
     }
 
   } else if (argc == 2) {
@@ -36,32 +37,32 @@ void cmd_pullup(Stream * ser, int argc, char ** argv) {
     if (pin != -1) {
       // pullup on <pin>
       if (!strcmp("on", argv[0])) {
-        ser->print(F("# PULLUP active pad "));
+        ser->print(F(SHELL_COMMENT " PULLUP active pad "));
         ser->print(pin);
         pads[pin].flags |= PADFLAG_PULLUP_MASK;
         pinMode(pin, INPUT_PULLUP);
 
       // pullup off <pin>
       } else if (!strcmp("off", argv[0])) {
-        ser->print(F("# PULLUP disable pad "));
+        ser->print(F(SHELL_COMMENT " PULLUP disable pad "));
         ser->print(pin);
         pads[pin].flags &= ~PADFLAG_PULLUP_MASK;
         pinMode(pin, INPUT);
 
       // pullup <other> <smthg>
       } else {
-          ser->print(F("# PULLUP wrong argument"));
+          ser->print(F(SHELL_COMMENT " PULLUP wrong argument"));
       }
 
     // pullup <smthg> <wrong_number>
     } else {
-      ser->print(F("# PULLUP wrong pad"));
+      ser->print(F(SHELL_COMMENT " PULLUP wrong pad"));
     }
 
   // usage
   } else {
     ser->print(F("\
-# Usage: pullup <'on'|'off'> [pad_nr]\r\n\
-# Activates pullup."));
+" SHELL_COMMENT " Usage: pullup <'on'|'off'> [pad_nr]\r\n\
+" SHELL_COMMENT " Activates pullup."));
   }
 }

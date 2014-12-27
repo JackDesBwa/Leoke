@@ -3,6 +3,8 @@
 
 #include <Arduino.h>
 
+#define SHELL_COMMENT ":"
+
 struct ShellConf {
   char * cmd;
   void (*fct)(Stream * ser, int argc, char ** argv);

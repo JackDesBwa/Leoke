@@ -1,10 +1,11 @@
 #include <Arduino.h>
+#include "shell.h"
 #include "pads_config.h"
 
 void cmd_reset(Stream * ser, int argc, char ** argv) {
   if (argc == 0 || (argc == 1 && !strcmp("quiet", argv[0]))) {
     if (argc == 0)
-      ser->print(F("# RESET"));
+      ser->print(F(SHELL_COMMENT " RESET"));
 
     for (int i = 0; i < NBPADS; ++i) {
 #ifdef MIDI_ENABLED
@@ -19,7 +20,7 @@ void cmd_reset(Stream * ser, int argc, char ** argv) {
     }
   } else {
     ser->print(F("\
-# Usage: reset ['quiet']\r\n\
-# Reset configuration."));
+" SHELL_COMMENT " Usage: reset ['quiet']\r\n\
+" SHELL_COMMENT " Reset configuration."));
   }
 }

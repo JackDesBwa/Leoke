@@ -56,11 +56,12 @@ void shell_loop() {
       ++input_insert;
     }
     if (input_insert == input_buffer + INPUT_BUFFER_SIZE) input_insert = input_buffer + INPUT_BUFFER_SIZE - 1;
-    if (chr == '#') input_comment = 1;
+    const char * comment = SHELL_COMMENT;
+    if (chr == comment[0]) input_comment = 1;
 
     // Handle CTRL-C
     if (chr_real == 3) {
-      ser->write("\r#\r\n");
+      ser->write("\r" SHELL_COMMENT "\r\n");
       ser->write(prompt);
       input_insert = input_buffer;
       input_comment = 0;
@@ -99,7 +100,7 @@ void shell_loop() {
         }
         cfg->fct(ser, nb_arguments, arguments);
       } else if (*mycmd) {
-        ser->write("\r\n# Wrong command, see help");
+        ser->write("\r\n" SHELL_COMMENT " Wrong command, see help");
       }
 
       // Display prompt again

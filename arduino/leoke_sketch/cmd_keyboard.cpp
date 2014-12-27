@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "shell.h"
 #include "pads_config.h"
 
 void cmd_keyboard_printconfig(Stream * ser, int pin) {
@@ -41,18 +42,18 @@ void cmd_keyboard(Stream * ser, int argc, char ** argv) {
   if (argc == 1) {
     int pin = str_to_pin(argv[0]);
     if (pin != -1) {
-      ser->print(F("# KEYBOARD unset pad "));
+      ser->print(F(SHELL_COMMENT " KEYBOARD unset pad "));
       ser->print(pin);
       pads[pin].flags &= ~PADFLAG_KEYBOARD_MASK;
     } else {
-      ser->print(F("# KEYBOARD wrong pad"));
+      ser->print(F(SHELL_COMMENT " KEYBOARD wrong pad"));
     }
   } else if (argc == 2) {
     int pin = str_to_pin(argv[0]);
     if (pin != -1) {
       int key = str_to_key(argv[1]);
       if (key != -1) {
-        ser->print(F("# KEYBOARD set key "));
+        ser->print(F(SHELL_COMMENT " KEYBOARD set key "));
         ser->print(argv[1]);
         ser->print(F(" to pad "));
         ser->print(pin);
@@ -60,12 +61,12 @@ void cmd_keyboard(Stream * ser, int argc, char ** argv) {
         pads[pin].flags |= PADFLAG_KEYBOARD_MASK;
       }
     } else {
-      ser->print(F("# KEYBOARD wrong pad"));
+      ser->print(F(SHELL_COMMENT " KEYBOARD wrong pad"));
     }
   } else {
     ser->print(F("\
-# Usage: keyboard <pad_nr> [key]\r\n\
-# With one argument, it removes keyboard key of pad number pad_nr\r\n\
-# With both arguments, it sets keyboard key of pad number pad_nr."));
+" SHELL_COMMENT " Usage: keyboard <pad_nr> [key]\r\n\
+" SHELL_COMMENT " With one argument, it removes keyboard key of pad number pad_nr\r\n\
+" SHELL_COMMENT " With both arguments, it sets keyboard key of pad number pad_nr."));
   }
 }

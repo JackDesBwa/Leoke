@@ -38,17 +38,17 @@ long time;
 *******************/
 
 const PROGMEM char * const motd = "\r\n\
-# ***************************\r\n\
-#  _                _\r\n\
-# | |     ____     | |   ____\r\n\
-# | |     ___  ___ | | _____\r\n\
-# | |    / _ \\/ _ \\| |/ / _ \\\r\n\
-# | |___|  __/ (_) |   <  __/\r\n\
-# \\_____/\\___|\\___/|_|\\_\\___|\r\n\
-#  http://leoke.desbwa.org/\r\n\
-# ***************************\r\n\
-#      Try help for help\r\n\
-# ***************************\r\n";
+" SHELL_COMMENT " ***************************\r\n\
+" SHELL_COMMENT "  _                _\r\n\
+" SHELL_COMMENT " | |     ____     | |   ____\r\n\
+" SHELL_COMMENT " | |     ___  ___ | | _____\r\n\
+" SHELL_COMMENT " | |    / _ \\/ _ \\| |/ / _ \\\r\n\
+" SHELL_COMMENT " | |___|  __/ (_) |   <  __/\r\n\
+" SHELL_COMMENT " \\_____/\\___|\\___/|_|\\_\\___|\r\n\
+" SHELL_COMMENT "  http://leoke.desbwa.org/\r\n\
+" SHELL_COMMENT " ***************************\r\n\
+" SHELL_COMMENT "      Try help for help\r\n\
+" SHELL_COMMENT " ***************************\r\n";
 
 const ShellConf shellconfig[] = {
   {"debug", cmd_debug},
@@ -93,7 +93,7 @@ void loop() {
     for (int i = 0; i < NBPADS; ++i) {
       if ((digitalRead(i) ^ pads[i].flags) & PADFLAG_ON_MASK) {
         if (pads[i].flags & PADFLAG_DEBUG_MASK) {
-          Serial.print("# PAD ");
+          Serial.print(SHELL_COMMENT " PAD ");
           Serial.print(i);
           Serial.print(" = ");
           Serial.println(pads[i].flags & PADFLAG_ON_MASK);

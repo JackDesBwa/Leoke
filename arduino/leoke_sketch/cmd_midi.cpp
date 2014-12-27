@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "shell.h"
 #include "pads_config.h"
 
 #ifdef MIDI_ENABLED
@@ -6,7 +7,7 @@
 void cmd_midi_printconfig(Stream * ser, int pin) {
   if (pads[pin].flags & PADFLAG_MIDI_MASK) {
     const char * notestr[] = {
-      "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" 
+      "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"
     };
     ser->print(F("midi "));
     ser->print(pin);
@@ -77,7 +78,7 @@ void cmd_midi(Stream * ser, int argc, char ** argv) {
     if (pin != -1) {
       // midi <pin>
       if (argc == 1) {
-        ser->print(F("# MIDI remove config of pad "));
+        ser->print(F(SHELL_COMMENT " MIDI remove config of pad "));
         ser->print(pin);
         pads[pin].flags &= ~PADFLAG_MIDI_MASK;
 
@@ -89,19 +90,19 @@ void cmd_midi(Stream * ser, int argc, char ** argv) {
         int velocity = 64;
 
         if (!str_to_note(argv[1], &note)) {
-          ser->print(F("# MIDI wrong note"));
+          ser->print(F(SHELL_COMMENT " MIDI wrong note"));
           return;
         }
 
         if (!str_to_octave(argv[1], &octave)) {
-          ser->print(F("# MIDI wrong octave"));
+          ser->print(F(SHELL_COMMENT " MIDI wrong octave"));
           return;
         }
 
         if (argc > 2) {
           int tmpchannel = atoi(argv[2]);
           if (tmpchannel < 1 || tmpchannel > 16) {
-            ser->print(F("# MIDI wrong channel"));
+            ser->print(F(SHELL_COMMENT " MIDI wrong channel"));
             return;
           }
           channel = MidiChannel(tmpchannel - 1);
@@ -110,13 +111,13 @@ void cmd_midi(Stream * ser, int argc, char ** argv) {
         if (argc == 4) {
           int tmpvelocity = atoi(argv[3]);
           if (tmpvelocity < 0 || tmpvelocity > 127) {
-            ser->print(F("# MIDI wrong veocity"));
+            ser->print(F(SHELL_COMMENT " MIDI wrong veocity"));
             return;
           }
           velocity = tmpvelocity;
         }
 
-        ser->print(F("# MIDI assign "));
+        ser->print(F(SHELL_COMMENT " MIDI assign "));
         ser->print(argv[1]);
         ser->print(" to pad ");
         ser->print(pin);
@@ -132,15 +133,15 @@ void cmd_midi(Stream * ser, int argc, char ** argv) {
         pads[pin].flags |= PADFLAG_MIDI_MASK;
       }
     } else {
-      ser->print(F("# MIDI wrong pad"));
+      ser->print(F(SHELL_COMMENT " MIDI wrong pad"));
     }
   } else {
     ser->print(F("\
-# Usage: midi <pad_nr> [note_octave] [channel] [velocity]\r\n\
-# With one argument, it removes midi config of pad number pad_nr.\r\n\
-# With note_octave argument, it assigns this note to pad number pad_nr. It of the form C7.\r\n\
-# With channel argument, it assigns this note to pad number pad_nr on specified channel.\r\n\
-# With all arguments, it assigns this note to pad number pad_nr with a custom velocity."));
+" SHELL_COMMENT " Usage: midi <pad_nr> [note_octave] [channel] [velocity]\r\n\
+" SHELL_COMMENT " With one argument, it removes midi config of pad number pad_nr.\r\n\
+" SHELL_COMMENT " With note_octave argument, it assigns this note to pad number pad_nr. It of the form C7.\r\n\
+" SHELL_COMMENT " With channel argument, it assigns this note to pad number pad_nr on specified channel.\r\n\
+" SHELL_COMMENT " With all arguments, it assigns this note to pad number pad_nr with a custom velocity."));
   }
 }
 
