@@ -11,3 +11,5 @@ Directory organization:
  - gerbers  : Production files, ready to be sent to manufacturer
  - kicad    : Editable files from kicad software
  - webpage  : Files seen at above web address
+
+Warning: This was built with arduino 1.0.6, do not know how to use it with newer versions
