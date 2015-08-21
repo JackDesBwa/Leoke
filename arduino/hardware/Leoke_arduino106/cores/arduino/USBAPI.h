@@ -1,11 +1,42 @@
+/*
+  USBAPI.h
+  Copyright (c) 2005-2014 Arduino.  All right reserved.
 
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 
 #ifndef __USBAPI__
 #define __USBAPI__
 
+#include <inttypes.h>
+#include <avr/pgmspace.h>
+#include <avr/eeprom.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
 #include <MIDIUSB.h>
 
+typedef unsigned char u8;
+typedef unsigned short u16;
+typedef unsigned long u32;
+
+#include "Arduino.h"
+
 #if defined(USBCON)
+
+#include "USBDesc.h"
+#include "USBCore.h"
 
 //================================================================================
 //================================================================================
@@ -27,25 +58,45 @@ extern USBDevice_ USBDevice;
 //================================================================================
 //	Serial over CDC (Serial1 is the physical port)
 
+struct ring_buffer;
+
+#ifndef SERIAL_BUFFER_SIZE
+#if (RAMEND < 1000)
+#define SERIAL_BUFFER_SIZE 16
+#else
+#define SERIAL_BUFFER_SIZE 64
+#endif
+#endif
+#if (SERIAL_BUFFER_SIZE>256)
+#error Please lower the CDC Buffer size
+#endif
+
 class Serial_ : public Stream
 {
 private:
-	ring_buffer *_cdc_rx_buffer;
+	int peek_buffer;
 public:
-	void begin(uint16_t baud_count);
+	Serial_() { peek_buffer = -1; };
+	void begin(unsigned long);
+	void begin(unsigned long, uint8_t);
 	void end(void);
 
 	virtual int available(void);
-	virtual void accept(void);
 	virtual int peek(void);
 	virtual int read(void);
 	virtual void flush(void);
 	virtual size_t write(uint8_t);
+	virtual size_t write(const uint8_t*, size_t);
 	using Print::write; // pull in write(str) and write(buf, size) from Print
 	operator bool();
+
+	volatile uint8_t _rx_buffer_head;
+	volatile uint8_t _rx_buffer_tail;
+	unsigned char _rx_buffer[SERIAL_BUFFER_SIZE];
 };
 extern Serial_ Serial;
 
+#define HAVE_CDCSERIAL
 
 //================================================================================
 //================================================================================
@@ -55,17 +106,17 @@ extern Serial_ Serial;
 
 struct midi_buffer
 {
-    unsigned char buffer[MIDI_BUFFER_SIZE];
-    volatile int head;
-    volatile int tail;
+	unsigned char buffer[MIDI_BUFFER_SIZE];
+	volatile int head;
+	volatile int tail;
 };
 
 typedef struct
 {
-    uint8_t type;
-    uint8_t m1;
-    uint8_t m2;
-    uint8_t m3;
+	uint8_t type;
+	uint8_t m1;
+	uint8_t m2;
+	uint8_t m3;
 } MIDIEvent;
 
 extern const MIDIEvent MIDI_EVENT_NONE;
@@ -73,17 +124,17 @@ extern const MIDIEvent MIDI_EVENT_NONE;
 class MIDIUSB_
 {
 private:
-    midi_buffer _rx_buffer;
+	midi_buffer _rx_buffer;
 public:
 
-    virtual int available(void);
-    virtual void accept(void);
-    virtual MIDIEvent peek(void);
-    virtual MIDIEvent read(void);
-    virtual void flush(void);
-    virtual void note(bool on, MidiNote note, MidiOctave octave, MidiChannel channel, char velocity);
-    virtual size_t write(MIDIEvent);
-    operator bool();
+	virtual int available(void);
+	virtual void accept(void);
+	virtual MIDIEvent peek(void);
+	virtual MIDIEvent read(void);
+	virtual void flush(void);
+	virtual bool note(bool on, MidiNote note, MidiOctave octave, MidiChannel channel, char velocity);
+	virtual size_t write(MIDIEvent);
+	operator bool();
 };
 extern MIDIUSB_ MIDIUSB;
 
@@ -167,8 +218,8 @@ class Keyboard_ : public Print
 {
 private:
 	KeyReport _keyReport;
-public:
 	void sendReport(KeyReport* keys);
+public:
 	Keyboard_(void);
 	void begin(void);
 	void end(void);
@@ -238,6 +289,7 @@ int USB_SendControl(uint8_t flags, const void* d, int len);
 int USB_RecvControl(void* d, int len);
 
 uint8_t	USB_Available(uint8_t ep);
+uint8_t USB_Ready(uint8_t ep);
 int USB_Send(uint8_t ep, const void* data, int len);	// blocking
 int USB_Recv(uint8_t ep, void* data, int len);		// non-blocking
 int USB_Recv(uint8_t ep);							// non-blocking

@@ -296,17 +296,17 @@ typedef struct
 
 typedef struct
 {
-    u8 len; // 5
-    u8 dtype;  // 0x25
-    u8 subtype; //0x01
-    u8 n;   //0x01;
-    u8 jackId;  //0x01;
+	u8 len; // 5
+	u8 dtype;  // 0x25
+	u8 subtype; //0x01
+	u8 n;   //0x01;
+	u8 jackId;  //0x01;
 } MIDIEndpointDescriptor;
 
 typedef struct
 {
-    EndpointDescriptor midi;
-    MIDIEndpointDescriptor desc;
+	EndpointDescriptor midi;
+	MIDIEndpointDescriptor desc;
 } MIDIEndpoint;
 
 // 0 1 0x05 Size of this descriptor, in bytes.
@@ -336,29 +336,28 @@ typedef struct
 
 typedef struct 
 {
-    u8 len;     // 9
-    u8 dtype;   // 0x24
-    u8 subtype; // MIDI_OUT_JACK
-    u8 jackType;
-    u8 index;
-    u8 nrPins;
-    u8 sourceId;
-    u8 sourcePin;
-    u8 unused;
+	u8 len;     // 9
+	u8 dtype;   // 0x24
+	u8 subtype; // MIDI_OUT_JACK
+	u8 jackType;
+	u8 index;
+	u8 nrPins;
+	u8 sourceId;
+	u8 sourcePin;
+	u8 unused;
 } MIDIJackOut;
 
 typedef struct 
 {
-	InterfaceDescriptor			midi;
-	MIDIInterfaceDescriptor			desc;
-	MIDIJackIn			jack1;
-	MIDIJackOut			jack2;
-    MIDIJackIn         jack3;
-    MIDIJackOut         jack4;
-    MIDIEndpoint endpoint1;
-    MIDIEndpoint endpoint2;
+	InterfaceDescriptor midi;
+	MIDIInterfaceDescriptor desc;
+	MIDIJackIn jack1;
+	MIDIJackOut jack2;
+	MIDIJackIn jack3;
+	MIDIJackOut jack4;
+	MIDIEndpoint endpoint1;
+	MIDIEndpoint endpoint2;
 } MIDIDescriptor;
-
 
 
 #define D_DEVICE(_class,_subClass,_proto,_packetSize0,_vid,_pid,_version,_im,_ip,_is,_configs) \
