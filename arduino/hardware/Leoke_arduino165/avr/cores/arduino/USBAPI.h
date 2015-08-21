@@ -132,7 +132,7 @@ public:
 	virtual MIDIEvent peek(void);
 	virtual MIDIEvent read(void);
 	virtual void flush(void);
-	virtual void note(bool on, MidiNote note, MidiOctave octave, MidiChannel channel, char velocity);
+	virtual bool note(bool on, MidiNote note, MidiOctave octave, MidiChannel channel, char velocity);
 	virtual size_t write(MIDIEvent);
 	operator bool();
 };
@@ -289,6 +289,7 @@ int USB_SendControl(uint8_t flags, const void* d, int len);
 int USB_RecvControl(void* d, int len);
 
 uint8_t	USB_Available(uint8_t ep);
+uint8_t USB_Ready(uint8_t ep);
 int USB_Send(uint8_t ep, const void* data, int len);	// blocking
 int USB_Recv(uint8_t ep, void* data, int len);		// non-blocking
 int USB_Recv(uint8_t ep);							// non-blocking
