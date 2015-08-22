@@ -1,0 +1,32 @@
+{
+  "packages": [
+    {
+      "name": "Leoke",
+      "maintainer": "Léoké",
+      "websiteURL": "http://leoke.desbwa.org/",
+      "email": "",
+      "help": {
+        "online": "http://leoke.desbwa.org/"
+      },
+      "platforms": [
+        {
+          "name": "Léoké",
+          "architecture": "avr",
+          "version": "1.0.0",
+          "category": "ATmega",
+          "help": {
+            "online": "http://leoke.desbwa.org/"
+          },
+          "url": "https://raw.githubusercontent.com/JackDesBwa/Leoke/master/arduino/hardware/arduino_leoke_package.tar.bz2",
+          "archiveFileName": "arduino_leoke_package.tar.bz2",
+          "checksum": "SHA-256:54ec53dffebb8c6ecda5028c84e8c05e60ca52b9ce0fda863c38be90834112c3",
+          "size": "98422",
+          "boards": [
+            {"name": "Léoké"}
+          ]
+        }
+      ]
+    }
+  ]
+}
+
