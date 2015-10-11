@@ -32,6 +32,7 @@ THE SOFTWARE.
 
 Pad pads[NBPADS];
 long time;
+bool shellinited = false;
 
 /*******************
 ** Shell commands **
@@ -73,11 +74,9 @@ void setup() {
   Serial.begin(115200);
   Keyboard.begin();
   Mouse.begin();
-  while(!Serial);
   time = millis();
   char * arg = "load";
-  cmd_eeprom(&Serial, 1, &arg);
-  shell_init(Serial, shellconfig, sizeof(shellconfig)/sizeof(*shellconfig), motd);
+  cmd_eeprom(Serial ? &Serial : 0, 1, &arg);
   for (int i = 0; i < NBPADS; ++i) {
     digitalWrite(i, LOW);
     if (pads[i].flags & PADFLAG_PULLUP_MASK)
@@ -92,7 +91,7 @@ void loop() {
   if (time < millis()) {
     for (int i = 0; i < NBPADS; ++i) {
       if ((digitalRead(i) ^ pads[i].flags) & PADFLAG_ON_MASK) {
-        if (pads[i].flags & PADFLAG_DEBUG_MASK) {
+        if (pads[i].flags & PADFLAG_DEBUG_MASK && shellinited) {
           Serial.print(SHELL_COMMENT " PAD ");
           Serial.print(i);
           Serial.print(" = ");
@@ -118,6 +117,11 @@ void loop() {
     time = millis() + 100;
   }
 
-  shell_loop();
+  if (shellinited) {
+    shell_loop();
+  } else if (Serial) {
+    shell_init(Serial, shellconfig, sizeof(shellconfig)/sizeof(*shellconfig), motd);
+    shellinited = true;
+  }
 }
 
